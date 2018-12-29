@@ -11,7 +11,7 @@ public class Principal {
         double maxit = 286;
         int[] layers = new int[]{10,9,8,7,6,5,4,3,2,1 };
 
-        MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.6, new SigmoidalTransfer());
+        MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.6, new HeavysideTransfer());
 
         String pattern = "/home/giuseppe/Downloads/2018.2/IA/Projeto/project/src/build/breast-cancer.arff"; //cortar para ter teste e training
 
@@ -59,7 +59,7 @@ public class Principal {
                     0.0};
             double [] outputT=net.execute(inputT);
 
-            System.out.println("RESP "+output[0][0]);
+            System.out.println("RESP "+outputT[0]);
         } catch (IOException e) {
             e.printStackTrace();
         }
