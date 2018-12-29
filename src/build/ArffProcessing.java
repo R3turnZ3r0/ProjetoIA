@@ -42,7 +42,13 @@ public class ArffProcessing {
                     output[i][0] = dt[i][j];
                     break;
                 } else {
-                    inputt[j] = dt[i][j];
+
+                    if(Double.isNaN(dt[i][j])) {
+                        System.out.println("AEO");
+                        inputt[j] = 0.0;
+                    }
+                    else
+                        inputt[j] = dt[i][j];
                 }
             }
             input[i]= Arrays.copyOf(inputt,inputt.length);
