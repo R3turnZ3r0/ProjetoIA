@@ -127,9 +127,10 @@ public class MultiLayerPerceptron implements Cloneable
 
 		for(int i = 0; i < output.length; i++)
 		{
+
 			error += Math.abs(new_output[i] - output[i]);
 
-			//System.out.println(output[i]+" "+new_output[i]);
+			System.out.println(output[i]+" "+new_output[i]);
 		}
 
 		error = error / output.length;
