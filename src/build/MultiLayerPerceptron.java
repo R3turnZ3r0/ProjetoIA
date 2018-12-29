@@ -20,13 +20,13 @@ public class MultiLayerPerceptron implements Cloneable
 		ActvateF = fun;
 
 		cmds = new Camada[camadas.length];
-
 		//Vai criando as camadas
 		//A primeira camada nao tem anterior entao o valor anterior eh 0
 		for(int i = 0; i < camadas.length; i++)
 		{
 			if(i != 0)
 			{
+
 				cmds[i] = new Camada(camadas[i], camadas[i - 1]);
 			}
 			else
@@ -91,23 +91,24 @@ public class MultiLayerPerceptron implements Cloneable
 											 // dados de entrada à rede e calcular o valor da função de erro obtida,
 											// ao comparar com o valor de saída esperado.
 		double error; //Valor da funcao de erro
-
+		//calcula os deltas na ida
 		for(int i = 0; i < cmds[cmds.length - 1].Tamanho; i++)
 		{
 			error = output[i] - new_output[i]; //
-			cmds[cmds.length - 1].Neuronios[i].Delta = error * ActvateF.evaluteDerivate(new_output[i]); //Cada neuronio decada camada
+			cmds[cmds.length - 1].Neuronios[i].Delta = error * ActvateF.evaluteDerivate(new_output[i]); //Cada neuronio decada
 		}
 		//TODO
 		//MODIFICAR OS CALCULOS usando as c do professor
-
+		//recalcula os erros na volta
 		for(int k = cmds.length - 2; k >= 0; k--) //calculo feito em todas as camadas intermediarias. Retirando a primeira e a ultima camada que sao as de input e output
 		{
 			// Calcula o erro da camada atual e recalcula os deltas
 			for(int i = 0; i < cmds[k].Tamanho; i++)
 			{
 				error = 0.0;
-				for(int j = 0; j < cmds[k + 1].Tamanho; j++)
+				for(int j = 0; j < cmds[k + 1].Tamanho; j++){
 					error += cmds[k + 1].Neuronios[j].Delta * cmds[k + 1].Neuronios[j].Pesos[i];
+				}
 				cmds[k].Neuronios[i].Delta = error * ActvateF.evaluteDerivate(cmds[k].Neuronios[i].Valor); //calcula o delta
 			}
 
@@ -129,9 +130,9 @@ public class MultiLayerPerceptron implements Cloneable
 
 			error += Math.abs(new_output[i] - output[i]);
 
-			//System.out.println(output[i]+" "+new_output[i]);
-		}
+			System.out.println(output[i]+" "+new_output[i]);
 
+		}
 		error = error / output.length;
 		return error;
 	}

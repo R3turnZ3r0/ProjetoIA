@@ -1,6 +1,5 @@
 package build;
 import build.transferfunctions.*;
-import weka.core.converters.ArffLoader;
 
 import java.io.IOException;
 
@@ -9,9 +8,9 @@ public class Principal {
     {
         double error = 0.0;
         double maxit = 286;
-        int[] layers = new int[]{10,9,8,7,6,5,4,3,2,1 };
+        int[] layers = new int[]{9,8,7,6,5,4,3,2,1 };
 
-        MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.6, new HeavysideTransfer());
+        MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.6, new HyperbolicTransfer());
 
         String pattern = "/home/giuseppe/Downloads/2018.2/IA/Projeto/project/src/build/breast-cancer.arff"; //cortar para ter teste e training
 
@@ -21,6 +20,7 @@ public class Principal {
             a.loadArff(pattern);
             double[][] inputs = a.getInput();
             double[][] output = a.getOutput();
+
             int i = 0;
 
             while((i < maxit))
@@ -37,6 +37,7 @@ public class Principal {
                     continue;
                 }
 
+                System.out.println();
                 // Training
                 error = net.backPropagate(inputs[i], output[i]);
                 System.out.println("Error at step "+i+" is "+error);
@@ -47,7 +48,7 @@ public class Principal {
             System.out.println("Learning completed!");
 
             /* Test */
-            double [] inputT = {4.0,
+            double [] inputT = {8.0,
                     1.0,
                     8.0,
                     0.0,
@@ -55,8 +56,7 @@ public class Principal {
                     2.0,
                     0.0,
                     2.0,
-                    1.0,
-                    0.0};
+                    1.0};
             double [] outputT=net.execute(inputT);
 
             System.out.println("RESP "+outputT[0]);

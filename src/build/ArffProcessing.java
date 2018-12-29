@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;;
@@ -34,16 +35,17 @@ public class ArffProcessing {
         output=new double[data.numInstances()][1];
         input=new double[data.numInstances()][9];
 
-        double [] inputt= new double[10];
+        double [] inputt= new double[9];
         for(int i=0; i<data.numInstances();i++) {
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j <10 ; j++) {
                 if (j == 9) {
                     output[i][0] = dt[i][j];
+                    break;
                 } else {
                     inputt[j] = dt[i][j];
                 }
-                input[i]=inputt;
             }
+            input[i]= Arrays.copyOf(inputt,inputt.length);
         }
 
     }
