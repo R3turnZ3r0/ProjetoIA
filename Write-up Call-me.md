@@ -37,6 +37,6 @@ Ligue-me mais tarde:
 8. Após digitarmos e analisarmos obtemos a mensagem
 	> keypadphoneisthe*****thatyouareseeking
 	
-		Devemos atentar pelo fato de que há um erro de ortografia e ao invés de **ANSWER** temos **ANSER**, por isso mesmo coloquei um '*', porém não impede de lermos a mensagem e entendermos qual a nossa key.
+		Devemos atentar pelo fato de que há um erro de ortografia e ao invés de **ANSWER** temos **ANSER**,   por isso mesmo coloquei um '*', porém não impede de lermos a mensagem e entendermos qual a nossa key.
 
 9. Após encontrarmos nossa key vamos ao shellter e digitamos a flag shellter{keypadphone}
