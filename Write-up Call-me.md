@@ -25,7 +25,7 @@ Ligue-me mais tarde:
  6. Pesquisando sobre T9 na internet encontramos varios emuladores. 
  	> Dentre eles há a ferramenta **DCODE**, que possui uma vasta gama de ferramentas na área de criptografia
 	
-	https://www.dcode.fr/t9-cipher
+	https://www.dcode.fr/t9-cipher/
 	https://www.sainsmograf.com/labs/t9-emulator/
  7. Ao utilizar o *t9-emulator* vamos digitando cada letra e percebemos que aos poucos vão sendo formado palavras, e clicando em cycle obtemos uma gama de possiblidades para um conjunto escrito, e devemos anotar todas as possíveis saídas para que ao final possamos encontrar nossa resposta.
 	> Temos como exemplo as saídas ao digitar 539
