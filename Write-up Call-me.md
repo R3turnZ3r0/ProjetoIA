@@ -19,9 +19,11 @@ Ligue-me mais tarde:
 
  5. Se continuarmos analisando o número percebemos que este se encontra dentre um range de [2,9] o que parece muito com o range dos antigos teclados dos celulares. Mantendo essa linha de raciocínio e estudando um pouco mais sobre os antigos telefones celulares nos deparamos com uma tecnologia de predição de textos o T9. 
 	> O objetivo do T9 era facilitar a entrada de mensagens de texto. Permitindo que uma mensagem fosse formada ao pressionar uma única tecla.
+	
 		https://en.wikipedia.org/wiki/T9_(predictive_text)
 
  6. Pesquisando sobre T9 na internet encontramos varios emuladores. Dentre eles há a ferramenta **DCODE**, que possui uma vasta gama de ferramentas na área de criptografia
+ 
 	https://www.dcode.fr/t9-cipher
 	https://www.sainsmograf.com/labs/t9-emulator/
  7. Ao utilizar o *t9-emulator* vamos digitando cada letra e percebemos que aos poucos vão sendo formado palavras, e clicando em cycle obtemos uma gama de possiblidades para um conjunto escrito, e devemos anotar todas as possíveis saídas para que ao final possamos encontrar nossa resposta.
@@ -32,6 +34,7 @@ Ligue-me mais tarde:
 		key
 8. Após digitarmos e analisarmos obtemos a mensagem
 	> keypadphoneisthe*****thatyouareseeking
+	
 		Devemos atentar pelo fato de que há um erro de ortografia e ao invés de **ANSWER** temos **ANSER**, por isso mesmo coloquei um '*', porém não impede de lermos a mensagem e entendermos qual a nossa key.
 
 9. Após encontrarmos nossa key vamos ao shellter e digitamos a flag shellter{keypadphone}
