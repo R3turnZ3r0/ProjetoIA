@@ -13,6 +13,7 @@ Ligue-me mais tarde:
 
  3. Antes de baixar o arquivo, devemos analisar o que a chall nos disponibiliza como informações, que é um suposto número de telefone que devemos ligar
 	> Analisando este número percebemos que, juntando em pares, obtemos uma sequência de bases criptograficas.
+	
 		16 64 32 16 64 32 32
  4. Seguinto esta sequência obtemos um assim um número que de cara não parece esta mais criptografado.
 	> 5397237466347843267379682737335464
