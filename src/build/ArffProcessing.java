@@ -44,7 +44,6 @@ public class ArffProcessing {
                 } else {
 
                     if(Double.isNaN(dt[i][j])) {
-                        System.out.println("AEO");
                         inputt[j] = 0.0;
                     }
                     else
@@ -55,7 +54,38 @@ public class ArffProcessing {
         }
 
     }
+    public static void loadArffTeste(String path) throws IOException {
+        BufferedReader reader =  new BufferedReader(new FileReader(path));
+        ArffLoader.ArffReader arff = new ArffLoader.ArffReader(reader);
+        Instances data = arff.getData();
+        data.setClassIndex(data.numAttributes() - 1);
+        //System.out.println(data.instance(0).toString(9)); Da a classe do elemento
+        double[][] dt= new double[data.numInstances()][3];
+        for(int i=0; i<data.numInstances(); i++){
+            dt[i] = data.instance(i).toDoubleArray();
+        }
+        output=new double[data.numInstances()][1];
+        input=new double[data.numInstances()][2];
 
+        double [] inputt= new double[2];
+        for(int i=0; i<data.numInstances();i++) {
+            for (int j = 0; j < 3 ; j++) {
+                if (j == 2) {
+                    output[i][0] = dt[i][j];
+                    break;
+                } else {
+
+                    if(Double.isNaN(dt[i][j])) {
+                        inputt[j] = 0.0;
+                    }
+                    else
+                        inputt[j] = dt[i][j];
+                }
+            }
+            input[i]= Arrays.copyOf(inputt,inputt.length);
+        }
+
+    }
 
 
 }

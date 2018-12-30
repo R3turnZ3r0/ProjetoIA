@@ -92,6 +92,7 @@ public class MultiLayerPerceptron implements Cloneable
 											// ao comparar com o valor de saída esperado.
 		double error; //Valor da funcao de erro
 		//calcula os deltas na ida
+
 		for(int i = 0; i < cmds[cmds.length - 1].Tamanho; i++)
 		{
 			error = output[i] - new_output[i]; //
@@ -130,51 +131,12 @@ public class MultiLayerPerceptron implements Cloneable
 
 			error += Math.abs(new_output[i] - output[i]);
 
-			System.out.println(output[i]+" "+new_output[i]);
+			//System.out.println(output[i]+" "+new_output[i]);
 
 		}
 		error = error / output.length;
 		return error;
 	}
-
-
-	public boolean save(String path)
-	{
-		try
-		{
-			FileOutputStream fout = new FileOutputStream(path);
-			ObjectOutputStream oos = new ObjectOutputStream(fout);
-			oos.writeObject(this);
-			oos.close();
-		}
-		catch (Exception e)
-		{
-			return false;
-		}
-
-		return true;
-	}
-
-
-	public static MultiLayerPerceptron load(String path)
-	{
-		try
-		{
-			MultiLayerPerceptron net;
-
-			FileInputStream fin = new FileInputStream(path);
-			ObjectInputStream oos = new ObjectInputStream(fin);
-			net = (MultiLayerPerceptron) oos.readObject();
-			oos.close();
-
-			return net;
-		}
-		catch (Exception e)
-		{
-			return null;
-		}
-	}
-
 
 	public double getLearningRate()
 	{
@@ -195,7 +157,6 @@ public class MultiLayerPerceptron implements Cloneable
 	{
 		return cmds[0].Tamanho;
 	}
-
 
 	public int getOutputLayerSize()
 	{

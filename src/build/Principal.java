@@ -8,9 +8,9 @@ public class Principal {
     {
         double error = 0.0;
         double maxit = 286;
-        int[] layers = new int[]{9,8,7,6,5,4,3,2,1 };
+        int[] layers = new int[]{9,12,1};
 
-        MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.6, new HyperbolicTransfer());
+        MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.3, new SigmoidalTransfer());
 
         String pattern = "/home/giuseppe/Downloads/2018.2/IA/Projeto/project/src/build/breast-cancer.arff"; //cortar para ter teste e training
 
@@ -20,46 +20,41 @@ public class Principal {
             a.loadArff(pattern);
             double[][] inputs = a.getInput();
             double[][] output = a.getOutput();
+            for(int i=0;i<9;i++) System.out.println(inputs[0][i]);
+            System.out.println(output[0][0]);
 
             int i = 0;
+            System.out.println("RODANDO...");
 
-            while((i < maxit))
-            {
-                if(inputs[i] == null)
-                {
+            for(int k=0;k<10000;k++) {
+                while ((i < maxit)) {
+                    if (inputs[i] == null) {
+                        i++;
+                        continue;
+                    }
+
+                    if (output[i] == null) {
+                        i++;
+                        continue;
+                    }
+
+                    // Training
+                    error = net.backPropagate(inputs[i], output[i]);
+                    System.out.println("Error at step " + i + " is " + error);
+
                     i++;
-                    continue;
                 }
-
-                if(output[i] == null)
-                {
-                    i++;
-                    continue;
-                }
-
-                System.out.println();
-                // Training
-                error = net.backPropagate(inputs[i], output[i]);
-                System.out.println("Error at step "+i+" is "+error);
-
-                i++;
+                i=0;
             }
-
             System.out.println("Learning completed!");
 
             /* Test */
-            double [] inputT = {8.0,
-                    1.0,
-                    8.0,
-                    0.0,
-                    1.0,
-                    2.0,
-                    0.0,
-                    2.0,
-                    1.0};
+            double [] inputT = new double[]{4.0,1.0,3.0,0.0,1.0,0.0,1.0,4.0,1.0};
+            //double [] inputT = new double[]{0.0,0.0};
             double [] outputT=net.execute(inputT);
 
-            System.out.println("RESP "+outputT[0]);
+            System.out.println(Math.round(outputT[0])+" ("+outputT[0]+")");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
