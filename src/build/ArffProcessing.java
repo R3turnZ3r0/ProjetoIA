@@ -3,14 +3,12 @@ package build;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import weka.core.Instances;
-import weka.core.converters.ArffLoader;;
+import weka.core.converters.ArffLoader;
 
 public class ArffProcessing {
-    //private static ArrayList<Double> output;
     private static double[][] output;
     private static double[][] input;
 
@@ -22,23 +20,22 @@ public class ArffProcessing {
         return input;
     }
 
-    public static void loadArff(String path) throws IOException {
+    public static void loadArff(String path, int numCloumn) throws IOException {
         BufferedReader reader =  new BufferedReader(new FileReader(path));
         ArffLoader.ArffReader arff = new ArffLoader.ArffReader(reader);
         Instances data = arff.getData();
         data.setClassIndex(data.numAttributes() - 1);
-        //System.out.println(data.instance(0).toString(9)); Da a classe do elemento
-        double[][] dt= new double[data.numInstances()][10];
+       double[][] dt= new double[data.numInstances()][numCloumn];
         for(int i=0; i<data.numInstances(); i++){
             dt[i] = data.instance(i).toDoubleArray();
         }
         output=new double[data.numInstances()][1];
-        input=new double[data.numInstances()][9];
+        input=new double[data.numInstances()][numCloumn-1];
 
-        double [] inputt= new double[9];
+        double [] inputt= new double[numCloumn-1];
         for(int i=0; i<data.numInstances();i++) {
-            for (int j = 0; j <10 ; j++) {
-                if (j == 9) {
+            for (int j = 0; j < numCloumn ; j++) {
+                if (j == numCloumn-1) {
                     output[i][0] = dt[i][j];
                     break;
                 } else {
@@ -54,38 +51,7 @@ public class ArffProcessing {
         }
 
     }
-    public static void loadArffTeste(String path) throws IOException {
-        BufferedReader reader =  new BufferedReader(new FileReader(path));
-        ArffLoader.ArffReader arff = new ArffLoader.ArffReader(reader);
-        Instances data = arff.getData();
-        data.setClassIndex(data.numAttributes() - 1);
-        //System.out.println(data.instance(0).toString(9)); Da a classe do elemento
-        double[][] dt= new double[data.numInstances()][3];
-        for(int i=0; i<data.numInstances(); i++){
-            dt[i] = data.instance(i).toDoubleArray();
-        }
-        output=new double[data.numInstances()][1];
-        input=new double[data.numInstances()][2];
 
-        double [] inputt= new double[2];
-        for(int i=0; i<data.numInstances();i++) {
-            for (int j = 0; j < 3 ; j++) {
-                if (j == 2) {
-                    output[i][0] = dt[i][j];
-                    break;
-                } else {
-
-                    if(Double.isNaN(dt[i][j])) {
-                        inputt[j] = 0.0;
-                    }
-                    else
-                        inputt[j] = dt[i][j];
-                }
-            }
-            input[i]= Arrays.copyOf(inputt,inputt.length);
-        }
-
-    }
 
 
 }

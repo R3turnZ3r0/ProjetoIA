@@ -1,11 +1,5 @@
 package build;
 
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
 public class MultiLayerPerceptron implements Cloneable
 {
 	protected double			TxAprendizado; //learning Rate
@@ -22,15 +16,10 @@ public class MultiLayerPerceptron implements Cloneable
 		cmds = new Camada[camadas.length];
 		//Vai criando as camadas
 		//A primeira camada nao tem anterior entao o valor anterior eh 0
-		for(int i = 0; i < camadas.length; i++)
-		{
-			if(i != 0)
-			{
-
+		for(int i = 0; i < camadas.length; i++) {
+			if (i != 0) {
 				cmds[i] = new Camada(camadas[i], camadas[i - 1]);
-			}
-			else
-			{
+			} else {
 				cmds[i] = new Camada(camadas[i], 0);
 			}
 		}
@@ -76,32 +65,24 @@ public class MultiLayerPerceptron implements Cloneable
 		return output;
 	}
 
-/*
-	public double backPropagateMultiThread(double[] input, double[] output, int nthread)
-	{
-		return 0.0;
-	}
-*/
-
-
-
 	public double backPropagate(double[] input, double[] output)
 	{
 		double new_output[] = execute(input); //Inicializar todos os pesos da rede com pequenos valores aleatórios Fornecer
 											 // dados de entrada à rede e calcular o valor da função de erro obtida,
 											// ao comparar com o valor de saída esperado.
-		double error; //Valor da funcao de erro
-		//calcula os deltas na ida
+		double error;
 
+		//Foward
+		//ERRO DA SAIDA
 		for(int i = 0; i < cmds[cmds.length - 1].Tamanho; i++)
 		{
-			error = output[i] - new_output[i]; //
-			cmds[cmds.length - 1].Neuronios[i].Delta = error * ActvateF.evaluteDerivate(new_output[i]); //Cada neuronio decada
+			error = output[i] - new_output[i];
+			cmds[cmds.length - 1].Neuronios[i].Delta = error * ActvateF.evaluteDerivate(new_output[i]); //Cada neuronio de cada camada
 		}
-		//TODO
-		//MODIFICAR OS CALCULOS usando as c do professor
-		//recalcula os erros na volta
-		for(int k = cmds.length - 2; k >= 0; k--) //calculo feito em todas as camadas intermediarias. Retirando a primeira e a ultima camada que sao as de input e output
+
+		//Backward
+		for(int k = cmds.length - 2; k >= 0; k--) 	//calculo feito em todas as camadas intermediarias.
+													// Retirando a primeira e a ultima camada que sao as de input e output
 		{
 			// Calcula o erro da camada atual e recalcula os deltas
 			for(int i = 0; i < cmds[k].Tamanho; i++)
@@ -137,31 +118,5 @@ public class MultiLayerPerceptron implements Cloneable
 		error = error / output.length;
 		return error;
 	}
-
-	public double getLearningRate()
-	{
-		return TxAprendizado;
-	}
-
-	public void	setLearningRate(double rate)
-	{
-		TxAprendizado = rate;
-	}
-
-	public void setTransferFunction(TransferFunction fun)
-	{
-		ActvateF = fun;
-	}
-
-	public int getInputLayerSize()
-	{
-		return cmds[0].Tamanho;
-	}
-
-	public int getOutputLayerSize()
-	{
-		return cmds[cmds.length - 1].Tamanho;
-	}
-
 }
 
