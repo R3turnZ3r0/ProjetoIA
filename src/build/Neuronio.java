@@ -7,9 +7,7 @@ public class Neuronio
 	public double[]		Pesos;
 	public double		Bias;
 	public double		Delta; //
-	/*
 
-	 */
 	public Neuronio(int LenCamadaAnt)
 	{
 		Pesos = new double[LenCamadaAnt]; //Precisa da tamanho da camada anterior pq a saida da camada anterior eh a entrada da camada atual

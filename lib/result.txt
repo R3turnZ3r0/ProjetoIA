@@ -1,0 +1,89 @@
+0.0
+RODANDO...
+Learning completed!
+acuracia0 : 28.947368421052634
+0.1
+RODANDO...
+Learning completed!
+acuracia1 : 65.78947368421053
+0.2
+RODANDO...
+Learning completed!
+acuracia2 : 68.42105263157895
+0.3
+RODANDO...
+Learning completed!
+acuracia3 : 63.1578947368421
+0.4
+RODANDO...
+Learning completed!
+acuracia4 : 73.68421052631578
+0.5
+RODANDO...
+Learning completed!
+acuracia5 : 72.80701754385966
+0.6
+RODANDO...
+Learning completed!
+acuracia6 : 64.03508771929825
+0.7
+RODANDO...
+Learning completed!
+acuracia7 : 66.66666666666666
+0.8
+RODANDO...
+Learning completed!
+acuracia8 : 68.42105263157895
+0.9
+RODANDO...
+Learning completed!
+acuracia9 : 64.91228070175438
+
+_________________________________
+
+0.0
+RODANDO...
+Learning completed!
+acuracia0 : 28.947368421052634
+0.1
+RODANDO...
+Learning completed!
+acuracia1 : 73.68421052631578
+0.2
+RODANDO...
+Learning completed!
+acuracia2 : 57.01754385964912
+0.3
+RODANDO...
+Learning completed!
+acuracia3 : 69.2982456140351
+0.4
+RODANDO...
+Learning completed!
+acuracia4 : 68.42105263157895
+0.5
+RODANDO...
+Learning completed!
+acuracia5 : 68.42105263157895
+0.6
+RODANDO...
+Learning completed!
+acuracia6 : 70.17543859649122
+0.7
+RODANDO...
+Learning completed!
+acuracia7 : 70.17543859649122
+0.8
+RODANDO...
+Learning completed!
+acuracia8 : 66.66666666666666
+0.9
+RODANDO...
+Learning completed!
+acuracia9 : 72.80701754385966
+1.0
+RODANDO...
+Learning completed!
+acuracia10 : 69.2982456140351
+
+
