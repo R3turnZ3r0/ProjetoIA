@@ -6,10 +6,12 @@ public class Principal {
     //breast cancer
     public static void main(String[] args)
     {
+        //variaveis iniciais
         double error;
-        int[] layers = new int[]{9,12,1};
-        double lR=0;
-        for(int v=0;v<=10;v++){
+        int[] layers = new int[]{9,12,1}; //LEYERS
+        double lR;
+
+        for(int v=0;v<=10;v++){ //LOOP PRA MOSTRAR QUAL O MELHOR RESULTADO COM UMA ACURACIA DE 0 ATE 1
             lR=((double) v)/10;
             System.out.println(lR);
             MultiLayerPerceptron net = new MultiLayerPerceptron(layers, lR, new TransferFunction());
@@ -25,9 +27,9 @@ public class Principal {
 
                 int i = 0;
 
-                System.out.println("RODANDO...");
-
-                for(int k=0;k<10000;k++) {
+                System.out.println("TREINANDO...");
+                //loop de treino
+                for(int k=0;k<10000;k++) { //deveria ter outro for modificando o k
                     while ((i < inputs.length)) {
                         if (inputs[i] == null) {
                             i++;
@@ -41,7 +43,7 @@ public class Principal {
 
                         // Training
                         error = net.backPropagate(inputs[i], output[i]);
-                        //System.out.println("Error is " + error);
+                        System.out.println("Error is " + error); //mostrar os erros. com ela fica mais lento o processo
 
                         i++;
                     }
@@ -49,21 +51,19 @@ public class Principal {
                 }
                 System.out.println("Learning completed!");
 
-                //Test
-                double [][] inputT = a.getInPutTest();
-                double[] saida = new double[a.getInPutTest().length];
+                System.out.println("TESTANDO...");
 
+                //Test
+                double [][] inputT = a.getInPutTest(); //input de teste
+                double[] saida = new double[a.getInPutTest().length]; // as saidas calculadas
+
+                //obtem todas as saidas ao executar os testes
                 for(i=0; i<a.getInPutTest().length;i++){
                     double [] outputT=net.execute(inputT[i]);
                     saida[i]=outputT[0];
-                    //for(int j=0;j<inputT[i].length;j++) {
-                    //    System.out.print(inputT[i][j]+" ");
-                    //}
-
-                    //System.out.println(" ="+Math.round(outputT[0]));
                 }
-                double acuracia = build.acuracia.calculo(a.getOutPutTest(),saida);
-                System.out.println("acuracia"+v+" : "+acuracia);
+                double acuracia = build.acuracia.calculo(a.getOutPutTest(),saida); // calculo da acuracia
+                System.out.println("acuracia"+v+" : "+acuracia);//print da acuracia
 
             } catch (IOException e) {
                 e.printStackTrace();
